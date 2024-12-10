@@ -19,15 +19,11 @@ teal = cmap(4,:);
 crimson = [0.7 0 0];
 
 windlims = [0 12];
-CD_var_lims = [0 1]*2;
+CD_var_lims = [1 100];
 Cdlims = [1e-2 1e1]*2;
 
-
-CD_var_ticks = log10(logspace(CD_var_lims(1),CD_var_lims(2),7));
-CD_var_ticklabels = {};
-for i = 1:length(CD_var_ticks)
-    CD_var_ticklabels{i} = sprintf('%0.1f',10^CD_var_ticks(i));
-end
+CD_var_ticks = [1 10 100];
+CD_var_ticklabels = {'1','10','100'};
 
 [EC_U10_m_s_fullcurrent_quantiles,EC_CD_w_fullcurrent_quantiles] = compute_quantiles_fixed_binsize(EC_U10_m_s-EC_U_w(1,:),EC_CD_w(1,:),numbins,quantiles);
 [EC_U10_m_s_slabcurrent_quantiles,EC_CD_w_slabcurrent_quantiles] = compute_quantiles_fixed_binsize(EC_U10_m_s-EC_U_w(2,:),EC_CD_w(2,:),numbins,quantiles);
@@ -109,14 +105,15 @@ end
 
 nexttile(3)
 hold on
-h_nocurrent = plot(EC_U10_m_s_nocurrent_quantiles(:,3),log10(EC_CD_v_nocurrent_quantiles(:,4))-log10(EC_CD_v_nocurrent_quantiles(:,2)),'-','Color',crimson,'linewidth',lw_interquartile);
-h_slabcurrent = plot(EC_U10_m_s_slabcurrent_quantiles(:,3),log10(EC_CD_v_slabcurrent_quantiles(:,4))-log10(EC_CD_v_slabcurrent_quantiles(:,2)),'-','Color',violet,'linewidth',lw_interquartile);
-h_fullcurrent = plot(EC_U10_m_s_fullcurrent_quantiles(:,3),log10(EC_CD_v_fullcurrent_quantiles(:,4))-log10(EC_CD_v_fullcurrent_quantiles(:,2)),'-','Color',teal,'linewidth',lw_interquartile);
+h_nocurrent = plot(EC_U10_m_s_nocurrent_quantiles(:,3),10.^(log10(EC_CD_v_nocurrent_quantiles(:,4))-log10(EC_CD_v_nocurrent_quantiles(:,2))),'-','Color',crimson,'linewidth',lw_interquartile);
+h_slabcurrent = plot(EC_U10_m_s_slabcurrent_quantiles(:,3),10.^(log10(EC_CD_v_slabcurrent_quantiles(:,4))-log10(EC_CD_v_slabcurrent_quantiles(:,2))),'-','Color',violet,'linewidth',lw_interquartile);
+h_fullcurrent = plot(EC_U10_m_s_fullcurrent_quantiles(:,3),10.^(log10(EC_CD_v_fullcurrent_quantiles(:,4))-log10(EC_CD_v_fullcurrent_quantiles(:,2))),'-','Color',teal,'linewidth',lw_interquartile);
 hold off
 box on
 xlim(windlims)
 ylim(CD_var_lims)
 ax_struc(3).ax=gca;
+ax_struc(3).ax.YScale = 'log';
 ax_struc(3).ax.YTick = CD_var_ticks;
 ax_struc(3).ax.YTickLabels = CD_var_ticklabels;
 xlabel('U-U_{i} [m s^{-1}]')
@@ -124,22 +121,22 @@ ylabel('C_{D,i} interquartile range size')
 
 nexttile(4)
 hold on
-h_nocurrent = plot(EC_U10_m_s_nocurrent_quantiles(:,3),log10(EC_CD_w_nocurrent_quantiles(:,4))-log10(EC_CD_w_nocurrent_quantiles(:,2)),'-','Color',crimson,'linewidth',lw_interquartile);
-h_slabcurrent = plot(EC_U10_m_s_slabcurrent_quantiles(:,3),log10(EC_CD_w_slabcurrent_quantiles(:,4))-log10(EC_CD_w_slabcurrent_quantiles(:,2)),'-','Color',violet,'linewidth',lw_interquartile);
-h_fullcurrent = plot(EC_U10_m_s_fullcurrent_quantiles(:,3),log10(EC_CD_w_fullcurrent_quantiles(:,4))-log10(EC_CD_w_fullcurrent_quantiles(:,2)),'-','Color',teal,'linewidth',lw_interquartile);
-plot([1 1],[0 log10(EC_CD_w_fullcurrent_quantiles(1,4))-log10(EC_CD_w_fullcurrent_quantiles(1,2))],'k:','linewidth',2)
-plot([0.75 1.25],[0 0],'k:','linewidth',2)
-plot([0.75 1.25],(log10(EC_CD_w_fullcurrent_quantiles(1,4))-log10(EC_CD_w_fullcurrent_quantiles(1,2)))*[1 1],'k:','linewidth',2)
+h_nocurrent = plot(EC_U10_m_s_nocurrent_quantiles(:,3),10.^(log10(EC_CD_w_nocurrent_quantiles(:,4))-log10(EC_CD_w_nocurrent_quantiles(:,2))),'-','Color',crimson,'linewidth',lw_interquartile);
+h_slabcurrent = plot(EC_U10_m_s_slabcurrent_quantiles(:,3),10.^(log10(EC_CD_w_slabcurrent_quantiles(:,4))-log10(EC_CD_w_slabcurrent_quantiles(:,2))),'-','Color',violet,'linewidth',lw_interquartile);
+h_fullcurrent = plot(EC_U10_m_s_fullcurrent_quantiles(:,3),10.^(log10(EC_CD_w_fullcurrent_quantiles(:,4))-log10(EC_CD_w_fullcurrent_quantiles(:,2))),'-','Color',teal,'linewidth',lw_interquartile);
+plot([1 1],[1 10.^(log10(EC_CD_w_fullcurrent_quantiles(1,4))-log10(EC_CD_w_fullcurrent_quantiles(1,2)))],'k:','linewidth',2)
+plot([0.75 1.25],[1 1],'k:','linewidth',2)
+plot([0.75 1.25],10.^(log10(EC_CD_w_fullcurrent_quantiles(1,4))-log10(EC_CD_w_fullcurrent_quantiles(1,2)))*[1 1],'k:','linewidth',2)
 hold off
 box on
 xlim(windlims)
 ylim(CD_var_lims)
 ax_struc(4).ax=gca;
+ax_struc(4).ax.YScale = 'log';
 ax_struc(4).ax.YTick = CD_var_ticks;
 ax_struc(4).ax.YTickLabels = CD_var_ticklabels;
 xlabel('U-U_{i} [m s^{-1}]')
-ylabel('C_{D,i} interquartile range size')
-text(0.5,log10(7),'*','HorizontalAlignment','center','FontSize',fsize)
+text(0.5,14,'*','HorizontalAlignment','center','FontSize',fsize)
 
 for i = 1:4
     nexttile(i)
