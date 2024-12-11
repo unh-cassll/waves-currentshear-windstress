@@ -1,10 +1,10 @@
 # waves-currentshear-windstress
 
-Codes used to generate graphics used in manuscript to be submitted to _Boundary Layer Meteorology_:
+Codes used to generate graphics used in manuscript to be submitted to _Boundary Layer Meteorology_ (2024):
 
 "Accounting for Waves and Current Shear in Ocean Wind Stress Parameterization"
  
-D. G. Ortiz-Suslow, N. J. M. Laxague, M. Curcic, & J.-V. I. Bjorkqvist, 2024
+D. G. Ortiz-Suslow, N. J. M. Laxague, M. Curcic, & J.-V. I. Bjorkqvist
 
 ## Manuscript Figure Generation
 Navigate to _2024\_manuscript_ and run _2024\_waves\_currentshear\_windstress\_figure\_gen\_script.m_.
