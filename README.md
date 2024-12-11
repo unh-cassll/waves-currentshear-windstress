@@ -1,13 +1,13 @@
 # waves-currentshear-windstress
 
-Codes used to generate graphics used in manuscript to be submitted to _Environmental Fluid Mechanics_:
+Codes used to generate graphics used in manuscript to be submitted to _Boundary Layer Meteorology_:
 
 "Accounting for Waves and Current Shear in Ocean Wind Stress Parameterization"
  
 D. G. Ortiz-Suslow, N. J. M. Laxague, M. Curcic, & J.-V. I. Bjorkqvist, 2024
 
 ## Manuscript Figure Generation
-Navigate to _2024\_EFM\_manuscript_ and run _EFM\_2024\_figure\_gen\_script.m_.
+Navigate to _2024\_manuscript_ and run _2024\_waves\_currentshear\_windstress\_figure\_gen\_script.m_.
 
 ## Core Functions Associated With Wind-Wave-Current Interaction Framework
 Navigate to _core\_functions_.

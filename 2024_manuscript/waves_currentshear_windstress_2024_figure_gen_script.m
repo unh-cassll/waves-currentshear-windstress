@@ -12,7 +12,6 @@ addpath _codes
 addpath _data
 addpath _outputs
 
-% addpath ../../../../geographic_utilities/
 addpath ../../../../geographic_utilities/m_map/
 
 close all;clear;clc
@@ -32,7 +31,6 @@ dpi_val = 100;
 dpi_string = ['-r' num2str(dpi_val)];
 
 boxpos = [1250 550 600 600];
-% two_by_one_pos = [25 25 600 1200];
 two_by_one_pos = [1250 550 600 1200];
 
 out_path = '_outputs/';
