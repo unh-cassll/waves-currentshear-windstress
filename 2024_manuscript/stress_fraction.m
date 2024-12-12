@@ -49,7 +49,7 @@ L = {'\tau_\nu','\tau_w','\tau_b'};
 legend(H,L,'Location','northeast')
 xlim(windlims)
 ylim([0 1])
-xlabel('U-U_{i} [m s^{-1}]')
+xlabel('$U_{10}-\mathcal{U}_{i}\,[m\,s^{-1}]$','Interpreter','LaTeX')
 ylabel('\tau_i/\tau')
 text(0.6,0.57,'no current','Color',crimson,'FontSize',fsize,'HorizontalAlignment','left')
 text(0.6,0.5,'slab current','Color',violet,'FontSize',fsize,'HorizontalAlignment','left')

@@ -67,7 +67,7 @@ h_full = plot(U10_trial,100*(tau_v_nocurrent-tau_v_fullcurrent)./tau_v_fullcurre
 hold off
 xlim(windlims)
 ylim([-0.5 1]*50)
-xlabel('U_{10} [m s^{-1}]')
+xlabel('$U_{10}\,[m\,s^{-1}]$','Interpreter','LaTeX')
 ylabel('relative to no current [%]')
 title('\tau_{\nu}')
 ax_struc(1).ax = gca;
@@ -84,7 +84,7 @@ h_full = plot(U10_trial,100*(tau_w_nocurrent-tau_w_fullcurrent)./tau_w_fullcurre
 hold off
 xlim(windlims)
 ylim([-0.5 1]*50)
-xlabel('U_{10} [m s^{-1}]')
+xlabel('$U_{10}\,[m\,s^{-1}]$','Interpreter','LaTeX')
 ylabel('relative to no current [%]')
 title('\tau_{w}')
 ax_struc(2).ax = gca;
@@ -101,7 +101,7 @@ h_full = plot(U10_trial,100*(tau_nocurrent-tau_fullcurrent)./tau_fullcurrent,'s'
 hold off
 xlim(windlims)
 ylim([-0.5 1]*50)
-xlabel('U_{10} [m s^{-1}]')
+xlabel('$U_{10}\,[m\,s^{-1}]$','Interpreter','LaTeX')
 ylabel('relative to no current [%]')
 title('\tau_{total}')
 H = [h_slab h_full];

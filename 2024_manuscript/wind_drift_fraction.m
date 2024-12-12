@@ -28,9 +28,9 @@ plot(EC_U10_m_s_nocurrent_quantiles(:,3),100*EC_U_drift_quantiles(:,3)./EC_U10_m
 plot(windlims,0*windlims+3,'k--','linewidth',2)
 hold off
 box on
-xlabel('U_{10} [m s^{-1}]')
-ylabel('100\cdotU_{S}/U_{10} [%]')
-text(0.86*windlims(end),2.3,'3%\timesU_{10}','HorizontalAlignment','center','FontSize',fsize)
+xlabel('$U_{10}\,[m\,s^{-1}]$','Interpreter','LaTeX')
+ylabel('$100\times\mathcal{U}_{S}/U_{10}\,[\%]$','Interpreter','LaTeX')
+text(0.86*windlims(end),2.3,'$3\%\times U_{10}$','HorizontalAlignment','center','FontSize',fsize,'Interpreter','LaTeX')
 xlim(windlims);ylim([0 10])
 f_interquartile.LineStyle = 'none';
 f_interquartile.FaceAlpha = 0.2;
@@ -43,9 +43,9 @@ plot(EC_U10_m_s_nocurrent_quantiles(:,3),EC_U_drift_quantiles(:,3)./EC_ustar_qua
 plot(windlims,0*windlims+0.53,'k--','linewidth',2)
 hold off
 box on
-xlabel('U_{10} [m s^{-1}]')
-ylabel('U_{S}/u_{*}')
-text(0.9*windlims(end),0.45,'0.53u_*','HorizontalAlignment','center','FontSize',fsize)
+xlabel('$U_{10}\,[m\,s^{-1}]$','Interpreter','LaTeX')
+ylabel('$\mathcal{U}_{S}/u_{*}$','Interpreter','LaTeX')
+text(0.9*windlims(end),0.45,'$0.53u_*$','HorizontalAlignment','center','FontSize',fsize,'Interpreter','LaTeX')
 xlim(windlims);ylim([0 1.4])
 f_interquartile.LineStyle = 'none';
 f_interquartile.FaceAlpha = 0.2;

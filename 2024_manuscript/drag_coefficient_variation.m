@@ -112,7 +112,7 @@ ax_struc(3).ax=gca;
 ax_struc(3).ax.YScale = 'log';
 ax_struc(3).ax.YTick = CD_var_ticks;
 ax_struc(3).ax.YTickLabels = CD_var_ticklabels;
-xlabel('U-U_{i} [m s^{-1}]')
+xlabel('$U_{10}-\mathcal{U}_{i}\,[m\,s^{-1}]$','Interpreter','LaTeX')
 ylabel('C_{D,i} interquartile range size')
 
 nexttile(4)
@@ -128,7 +128,7 @@ ax_struc(4).ax=gca;
 ax_struc(4).ax.YScale = 'log';
 ax_struc(4).ax.YTick = CD_var_ticks;
 ax_struc(4).ax.YTickLabels = CD_var_ticklabels;
-xlabel('U-U_{i} [m s^{-1}]')
+xlabel('$U_{10}-\mathcal{U}_{i}\,[m\,s^{-1}]$','Interpreter','LaTeX')
 for i = 1:4
     nexttile(i)
     text(label_x,label_y,labelcell{i},'HorizontalAlignment','center','Units','normalized','FontSize',fsize)

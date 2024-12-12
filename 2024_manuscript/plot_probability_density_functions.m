@@ -50,7 +50,7 @@ plot(centers_U10,frac_U10*100,'k-','LineWidth',3)
 hold off
 xlim(Ulims)
 ylim(plims)
-xlabel('U_{10} [m s^{-1}]')
+xlabel('$U_{10}\,[m\,s^{-1}]$','Interpreter','LaTeX')
 text(plot_x,plot_y,'(a)','FontSize',fsize,'HorizontalAlignment','center','Units','normalized')
 
 f_id.FaceAlpha = fA;
@@ -78,7 +78,7 @@ plot(centers_Us,frac_Us*100,'k-','LineWidth',3)
 hold off
 xlim(USlims)
 ylim(plims)
-xlabel('U_S [m s^{-1}]')
+xlabel('$\mathcal{U}_{S}\,[m\,s^{-1}]$','Interpreter','LaTeX')
 text(plot_x,plot_y,'(b)','FontSize',fsize,'HorizontalAlignment','center','Units','normalized')
 
 f_id.FaceAlpha = fA;
@@ -106,7 +106,7 @@ plot(centers_Hs,frac_Hs*100,'k-','LineWidth',3)
 hold off
 xlim(Hlims)
 ylim(plims)
-xlabel('H_s [m]')
+xlabel('$H_s\,[m]$','Interpreter','LaTeX')
 text(plot_x,plot_y,'(c)','FontSize',fsize,'HorizontalAlignment','center','Units','normalized')
 
 f_id.FaceAlpha = fA;
@@ -134,7 +134,7 @@ plot(centers_Tm,frac_Tm*100,'k-','LineWidth',3)
 hold off
 xlim(Tlims)
 ylim(plims)
-xlabel('T_m [s]')
+xlabel('$T_m\,[s]$','Interpreter','LaTeX')
 text(plot_x,plot_y,'(d)','FontSize',fsize,'HorizontalAlignment','center','Units','normalized')
 
 f_id.FaceAlpha = fA;
