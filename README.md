@@ -2,7 +2,7 @@
 
 Codes used to generate graphics used in manuscript to be submitted to _Boundary Layer Meteorology_ (2024):
 
-"Accounting for Waves and Current Shear in Ocean Wind Stress Parameterization"
+"Accounting for Ocean Waves and Current Shear in Wind Stress Parameterization"
  
 D. G. Ortiz-Suslow, N. J. M. Laxague, M. Curcic, & J.-V. I. Bjorkqvist
 
