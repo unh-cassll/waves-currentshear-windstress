@@ -23,10 +23,11 @@ omega_rad_s = sqrt((g*wave_k_rad_m+sigma/rho_w*wave_k_rad_m.^3).*tanh(wave_k_rad
 cp_m_s = omega_rad_s./wave_k_rad_m;
 
 % Initial step: Plant [1982] parameterization
+fwd_inds = abs(wave_theta_rad) <= pi/2;
 beta = 0.04*omega_rad_s.*(air_side_friction_velocity_m_s./cp_m_s).^2.*cos(wave_theta_rad);
-integrand = rho_w*g*beta.*wave_F_k_theta./cp_m_s.*wave_k_rad_m.*cos(wave_theta_rad);
+integrand = rho_w*g*beta(:,fwd_inds).*wave_F_k_theta(:,fwd_inds)./cp_m_s.*wave_k_rad_m.*cos(wave_theta_rad(fwd_inds));
 integrand(isnan(integrand)) = 0;
-tau_wave_k = squeeze(trapz(wave_theta_rad,integrand,2));
+tau_wave_k = squeeze(trapz(wave_theta_rad(fwd_inds),integrand,2));
 
 [~,f2,f3,Usep,epsilon_b,Lambda_differential] = compute_airflow_separation_parameters(air_side_friction_velocity_m_s,U10_m_s,wave_k_rad_m,wave_theta_rad,wave_F_k_theta,beta);
 
@@ -41,7 +42,7 @@ shorter_waves_drag = tau_wave_int - cumtrapz(wave_k_rad_m,tau_wave_k);
 tau_visc_int = tau_total - tau_wave_int - tau_sep_int;
 
 % Mueller & Veron [2009] approach
-theta_inds = abs(wave_theta_rad) < pi;
+theta_inds = abs(wave_theta_rad) <= pi/2;
 Cb = 0.02 - 0.02*tanh(cp_m_s./(2*air_side_friction_velocity_m_s)-1.8*pi);
 h_block = cos(wave_theta_rad).^1;
 beta = 1/rho_a*Cb.*omega_rad_s.*cp_m_s.^-2.*h_block.*(tau_visc_int + tau_sep_int + shorter_waves_drag);

@@ -27,24 +27,23 @@ Pbr = 2*pi./wave_k_rad_m.*L_tilde;
 
 Lambda_differential = L_tilde./wave_k_rad_m;
 
-Q = 1 - squeeze(trapz(wave_theta_rad,L_mat.*Pbr,2));
+fwd_inds = abs(wave_theta_rad) <= pi/2;
 
-A_tilde_integral = squeeze(trapz(wave_theta_rad,L_mat.*Pbr,2));
+A_tilde_integral = squeeze(trapz(wave_theta_rad(fwd_inds), ...
+                                  L_mat(:,fwd_inds).*Pbr(:,fwd_inds), 2));
 
-product_mat = cumprod(Q);
+product_mat = exp(-cumtrapz(wave_k_rad_m, A_tilde_integral));
 
 A_tilde = product_mat.*A_tilde_integral;
 
 f1 = 1 - trapz(wave_k_rad_m,A_tilde);
 f2 = 1 - cumtrapz(wave_k_rad_m,A_tilde);
-f3 = A_tilde.*(squeeze(trapz(wave_theta_rad,Pbr,2))).^-1;
+% f3 uses Pbr integrated over the same forward sector for consistency.
+f3 = A_tilde.*(squeeze(trapz(wave_theta_rad(fwd_inds),Pbr(:,fwd_inds),2))).^-1;
 
 f1(isnan(f1)) = 0;
 f2(isnan(f2)) = 0;
 f3(isnan(f3)) = 0;
-
-f2(f2<0) = 0;
-f3(f3<0) = 0;
 
 Usep = retrieve_Useparation_breaking(air_side_friction_velocity_m_s,U10_m_s,epsilon_b,wave_k_rad_m);
 
